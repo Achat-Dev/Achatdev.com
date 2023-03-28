@@ -258,6 +258,10 @@ hr {
     filter: invert(100%);
 }
 
+.vspace-xs {
+    height: 7px;
+}
+
 .vspace-s {
     height: 15px;
 }

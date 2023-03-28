@@ -10,6 +10,7 @@ class Typewriter extends HTMLElement {
         let fontStyle = checkForAttribute(this, "font-style", "italic");
         let steps = checkForAttribute(this, "steps", 40);
         let mode = JSON.parse(localStorage.getItem("mode"));
+        let delay = checkForAttribute(this, "delay", 0);
         let caretColour;
         if (mode === true) {
             caretColour = "black";
@@ -25,7 +26,8 @@ class Typewriter extends HTMLElement {
         }
         
         @keyframes caret {
-            from { border-color: ${caretColour} }
+            from { border-color: transparent }
+            0.01% { border-color: ${caretColour} }
             99% { border-color: ${caretColour} }
             100% { border-color: transparent }
         }
@@ -49,9 +51,10 @@ class Typewriter extends HTMLElement {
                     margin: 0 auto;
                     border-right: 0.12em solid transparent;
                     letter-spacing: 0.1em;
-                
                     animation: typing ${speed}s steps(${steps}, end),
                                 caret ${caretSpeed}s steps(${steps}, end);
+                    animation-delay: ${delay}s;
+                    animation-fill-mode: both;
                 ">${text}</p>
             </div>
             <div style="height: 100%;"></div>
