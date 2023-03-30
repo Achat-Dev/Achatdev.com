@@ -7,7 +7,12 @@ let lightMode = true;
 const PRELOAD = "preload"
 
 window.addEventListener("DOMContentLoaded", function() {
-    lightMode = JSON.parse(localStorage.getItem("mode"));
+    if (localStorage.getItem("mode") === null) {
+        lightMode = true;
+    }
+    else {
+        lightMode = JSON.parse(localStorage.getItem("mode"));
+    }
     body = document.body;
     toggle = document.getElementById("mode-toggle");
     footer = document.getElementById("footer");
