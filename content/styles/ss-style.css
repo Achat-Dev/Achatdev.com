@@ -88,6 +88,15 @@ code {
     margin-right: auto;
 }
 
+.text-centered {
+    text-align: center;
+    font-weight: bold;
+}
+
+.text-content li {
+    margin: 10px 0;
+}
+
 @media only screen and (min-width: 0px) and (max-width: 365px) {
     .grid-widget a {
         padding-top: 10px !important;
