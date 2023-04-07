@@ -9,6 +9,7 @@ const PRELOAD = "preload"
 window.addEventListener("DOMContentLoaded", function() {
     if (localStorage.getItem("mode") === null) {
         lightMode = true;
+        localStorage.setItem("mode", lightMode);
     }
     else {
         lightMode = JSON.parse(localStorage.getItem("mode"));
