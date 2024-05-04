@@ -1,7 +1,6 @@
 <script>
     import { Scrollable } from "$lib/scrollable"
     import { constants } from "$lib/assets/data.json"
-    import { base } from "$app/paths"
 
     export let src
     export let alt
@@ -27,7 +26,7 @@
 
 <svelte:window bind:scrollY={scrollY} bind:innerHeight={windowHeight}/>
 
-<img src="{base}/src/lib/assets/{src}" alt={alt} style="--scale: {visual.scale}; --opacity: {visual.opacity}; --blur: {visual.blur}rem; --transform: {transform}"/>
+<img src="/{src}" alt={alt} style="--scale: {visual.scale}; --opacity: {visual.opacity}; --blur: {visual.blur}rem; --transform: {transform}"/>
 
 <style>
     img {

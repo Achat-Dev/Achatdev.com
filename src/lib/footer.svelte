@@ -30,7 +30,7 @@
             {#each socialMedia as { url, img, alt }}
             <div class="icon-content">
                 <a href="{url}" target="_blank">
-                    <img src="./src/lib/assets/{img}" alt="{alt}" class="img-invertible">
+                    <img src="/{img}" alt="{alt}" class="img-invertible">
                 </a>
             </div>
             {/each}
