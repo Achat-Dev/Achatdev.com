@@ -1,5 +1,5 @@
 <script>
-    import arrowDown from "$lib/assets/icons/arrow-down.svg"
+    import { base } from "$app/paths"
 
     export let top
     export let up
@@ -12,7 +12,7 @@
 </script>
 
 <div class="scroll-indicator-arrow-container" style="--top: {top}; --up: {up}; --down: {down}; --delay: {delay}; --scale: {opacity <= 0.0 ? 0.0 : scale}; --opacity: {opacity}; --blur: {blur}rem">
-    <img src="{arrowDown}" alt="An arrow pointing downwards, indicating that one can sroll down" class="img-invertible">
+    <img src="{base}/icons/arrow-down.svg" alt="An arrow pointing downwards, indicating that one can sroll down" class="img-invertible">
 </div>
 
 <style>
