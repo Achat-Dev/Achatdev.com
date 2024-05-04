@@ -1,6 +1,7 @@
 <script>
     import { constants, socialMedia } from "$lib/assets/data.json"
     import { Scrollable } from "./scrollable"
+    import { base } from "$app/paths"
     import ScrollIndicator from "./scrollIndicator/scrollIndicator.svelte"
 
     export let index
@@ -30,7 +31,7 @@
             {#each socialMedia as { url, img, alt }}
             <div class="icon-content">
                 <a href="{url}" target="_blank">
-                    <img src="/{img}" alt="{alt}" class="img-invertible">
+                    <img src="{base}/{img}" alt="{alt}" class="img-invertible">
                 </a>
             </div>
             {/each}
