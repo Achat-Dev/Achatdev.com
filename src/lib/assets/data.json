@@ -9,7 +9,7 @@
             "description": "<p>This game engine is written in C# and uses OpenGL via Silk.NET. At the moment it is more of a render engine though, because there is very little game logic code implemented.<p><span style='font-style: italic;'>Why C# and not C++?</span> - Because I didn't feel comfortable enough with C++ at the time to tackle such a large project.</p></p><p>Features:<ul><li>Entity-Component-System</li><li>Physically based rendering</li><li>Dynamic directional and omnidirectional shadows</li><li>Cascaded shadow maps</li><li>Material system</li><li>Model loading</li><li>Texture loading</li></ul></p><div style='display: flex; justify-content: center; align-items: center;'><a type='button' href='https://github.com/Achat-Dev/Nebula' target='_blank' style='text-shadow: none;'>View on GitHub</a></div>",
             "images": [
                 {
-                    "src": "images/nebula/1.jpg",
+                    "src": "images/nebula/nb1.jpg",
                     "alt": "A screenshot of a demo scene rendered in real time with Nebula",
                     "transform": "scale(0.9) rotate(-5deg) translate(-1vw, -2vh)"
                 }
