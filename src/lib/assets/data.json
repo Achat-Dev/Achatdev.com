@@ -83,17 +83,17 @@
     "socialMedia": [
         {
             "url": "https://github.com/Achat-Dev",
-            "img": "icons/github-icon.svg",
+            "src": "icons/github-icon.svg",
             "alt": "The GitHub icon"
         },
         {
             "url": "https://achat.itch.io/",
-            "img": "icons/itchio-icon.svg",
+            "src": "icons/itchio-icon.svg",
             "alt": "The itch.io icon"
         },
         {
             "url": "https://twitter.com/AchatDev",
-            "img": "icons/twitter-icon.svg",
+            "src": "icons/twitter-icon.svg",
             "alt": "The Twitter icon"
         }
     ]

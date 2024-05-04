@@ -28,10 +28,10 @@
     <div class="footer-container" style="--scale: {visual.scale}; --opacity: {visual.opacity}; --blur: {visual.blur}rem">
         <h1>Well, that's it :)</h1>
         <div class="icon-container">
-            {#each socialMedia as { url, img, alt }}
+            {#each socialMedia as { url, src, alt }}
             <div class="icon-content">
                 <a href="{url}" target="_blank">
-                    <img src="{base}/{img}" alt="{alt}" class="img-invertible">
+                    <img src="{base}/{src}" alt="{alt}" class="img-invertible">
                 </a>
             </div>
             {/each}
