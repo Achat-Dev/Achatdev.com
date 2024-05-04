@@ -48,7 +48,7 @@
         },
         {
             "header": "Out of Vengeance - Combat demo",
-            "description": "<video width='100%' src='./src/lib/assets/images/outOfVengeance/oovCombat.mp4' controls></video>",
+            "description": "<video width='100%' src='/src/lib/assets/images/outOfVengeance/oovCombat.mp4' controls></video>",
             "images": [
 
             ]
