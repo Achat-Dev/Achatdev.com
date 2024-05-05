@@ -5,7 +5,6 @@
 	"scripts": {
 		"dev": "vite dev",
 		"build": "vite build",
-		"postbuild": "mv 404.html fallback.html",
 		"preview": "vite preview"
 	},
 	"devDependencies": {
