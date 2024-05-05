@@ -1,5 +1,4 @@
 <script>
-    import { onMount } from "svelte"
     import { clamp, lerp } from "$lib/math"
     import { projects } from "$lib/assets/data.json"
     import Project from "$lib/project/project.svelte"
@@ -17,14 +16,6 @@
 
     $: projectCount = Object.keys(projects).length + 1
     $: siteHeight = windowHeight * projectCount
-
-    onMount(() => {
-        let dataTheme = localStorage.getItem("data-theme")
-        if (dataTheme === null) {
-            dataTheme = "light"
-        }
-        document.documentElement.setAttribute("data-theme", dataTheme)
-    })
 </script>
 
 <svelte:window bind:scrollY={scrollY} bind:innerHeight={windowHeight}/>
@@ -45,15 +36,6 @@
 <div class="page-sizer" style="--height: {siteHeight}px"></div>
 
 <style>
-    :root {
-        --pico-font-family: "Lato", Helvetica, Arial, sans-serif;
-        --pico-transition: 0.5s ease-in-out;
-        --icon-transition: 0.1s linear;
-        scroll-behavior: smooth;
-        transition: var(--pico-transition);
-        overflow-x: hidden;
-    }
-
     .page-sizer {
         width: 100%;
         height: var(--height);
@@ -66,43 +48,5 @@
         scale: var(--scale);
         opacity: var(--opacity);
         filter: blur(var(--blur));
-    }
-
-    :global(.slide-container) {
-        position: sticky;
-        top: 0px;
-        margin-top: var(--margin);
-        width: 100%;
-        height: 100vh;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-    }
-
-    :global([data-theme="light"] .background-gradient) {
-        background-image: linear-gradient(155deg, rgba(200, 200, 200, 0.0), rgba(230, 225, 235, 0.1));
-        transition: var(--pico-transition);
-    }
-
-    :global([data-theme="dark"] .background-gradient) {
-        background-image: linear-gradient(155deg, rgba(200, 200, 200, 0.0), rgba(205, 200, 210, 0.1));
-        transition: var(--pico-transition);
-    }
-
-    :global(div) {
-        overflow: hidden;
-    }
-
-    :global(a:hover) {
-        transition: var(--icon-transition);
-    }
-    
-    :global(a:not(a:hover)) {
-        transition: var(--icon-transition);
-    }
-
-    :global(h1, h2, h3, h4, h5, h6, p, ul, hr) {
-        transition: var(--pico-transition);
     }
 </style>
