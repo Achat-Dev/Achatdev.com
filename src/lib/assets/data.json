@@ -6,7 +6,7 @@
     "projects": [
         {
             "header": "Nebula - An OpenGL game engine",
-            "description": "<p>This game engine is written in C# and uses OpenGL via Silk.NET. At the moment it is more of a render engine though, because there is very little game logic code implemented.<p><span style='font-style: italic;'>Why C# and not C++?</span> - Because I didn't feel comfortable enough with C++ at the time to tackle such a large project.</p></p><p>Features:<ul><li>Entity-Component-System</li><li>Physically based rendering</li><li>Dynamic directional and omnidirectional shadows</li><li>Cascaded shadow maps</li><li>Material system</li><li>Model loading</li><li>Texture loading</li></ul></p><div style='display: flex; justify-content: center; align-items: center;'><a type='button' href='https://github.com/Achat-Dev/Nebula' target='_blank' style='text-shadow: none;'>View on GitHub</a></div>",
+            "description": "<p>This game engine is written in C# and uses OpenGL via Silk.NET (at the moment it is more of a render engine though, because there is very little game logic code implemented).<p><span style='font-style: italic;'>Why C# and not C++?</span> - Because I didn't feel comfortable enough with C++ at the time to tackle such a large project.</p></p><p>Features:<ul><li>Entity-Component-System</li><li>Physically based rendering</li><li>Dynamic directional and omnidirectional shadows</li><li>Cascaded shadow maps</li><li>Material system</li><li>Model loading</li><li>Texture loading</li></ul></p><div style='display: flex; justify-content: center; align-items: center;'><a type='button' href='https://github.com/Achat-Dev/Nebula' target='_blank' style='text-shadow: none;'>View on GitHub</a></div>",
             "images": [
                 {
                     "src": "images/nebula/nb1.jpg",
@@ -48,7 +48,7 @@
         },
         {
             "header": "Out of Vengeance - Combat demo",
-            "description": "",
+            "description": "<div class='iframe-container'><iframe src='https://www.youtube-nocookie.com/embed/tE_R-34G-Uc?si=ndpTmv_6lhjN_5bT' title='Out of Vengeance - Combat demo' frameborder='0' allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share' referrerpolicy='strict-origin-when-cross-origin' allowfullscreen></iframe></div><style>.iframe-container { position: relative;  width: 100%; padding-bottom: 56.25%;  height: 0; } .iframe-container iframe { position: absolute; top:0; left: 0; width: 100%; height: 100%; }</style>",
             "images": [
 
             ]
