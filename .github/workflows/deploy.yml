@@ -25,6 +25,10 @@ jobs:
           BASE_PATH: '/${{ github.event.repository.name }}'
         run: |
           npm run build
+      
+      - name: postbuild
+        run: |
+          npm run postbuild
 
       - name: Upload Artifacts
         uses: actions/upload-pages-artifact@v3
