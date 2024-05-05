@@ -11,7 +11,7 @@
                 {
                     "src": "images/nebula/nb1.jpg",
                     "alt": "A screenshot of a demo scene rendered in real time with Nebula",
-                    "transform": "scale(0.9) rotate(-5deg) translate(-1vw, -2vh)"
+                    "transform": "scale(0.85) rotate(-5deg) translate(-1vw, -2vh)"
                 }
             ]
         },
@@ -22,27 +22,27 @@
                 {
                     "src": "images/outOfVengeance/oov2.jpg",
                     "alt": "A screenshot of Out of Vengeance displaying a raided throne room",
-                    "transform": "scale(0.51) rotate(5deg) translate(-52vw, 63vh)"
+                    "transform": "scale(0.46) rotate(5deg) translate(-52vw, 63vh)"
                 },
                 {
-                    "src": "images/outOfVengeance/oov3.jpg",
+                    "src": "images/outOfVengeance/oov5.jpg",
                     "alt": "A screenshot of Out of Vengeance displaying a prison",
-                    "transform": "scale(0.49) rotate(12deg) translate(57vw, -68vh)"
+                    "transform": "scale(0.44) rotate(12deg) translate(57vw, -68vh)"
                 },
                 {
                     "src": "images/outOfVengeance/oov4.jpg",
                     "alt": "A screenshot of Out of Vengeance displaying a raided throne room",
-                    "transform": "scale(0.52) rotate(-5deg) translate(42vw, 62vh)"
+                    "transform": "scale(0.47) rotate(-5deg) translate(42vw, 62vh)"
                 },
                 {
-                    "src": "images/outOfVengeance/oov5.jpg",
+                    "src": "images/outOfVengeance/oov3.jpg",
                     "alt": "A screenshot of Out of Vengeance displaying a raided throne room",
-                    "transform": "scale(0.43) rotate(-10deg) translate(-64vw, -76vh)"
+                    "transform": "scale(0.39) rotate(-10deg) translate(-64vw, -76vh)"
                 },
                 {
                     "src": "images/outOfVengeance/oov6.jpg",
                     "alt": "A screenshot of Out of Vengeance displaying a raided throne room",
-                    "transform": "scale(0.53) rotate(2deg) translate(0vw, -1vh)"
+                    "transform": "scale(0.42) rotate(2deg) translate(0vw, -1vh)"
                 }
             ]
         },
