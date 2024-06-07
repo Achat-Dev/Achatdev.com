@@ -1,8 +1,4 @@
 {
-    "constants": {
-        "thresholdIn": 0.3,
-        "thresholdOut": 0.7
-    },
     "projects": [
         {
             "header": "Nebula - An OpenGL game engine",

@@ -65,6 +65,26 @@
         box-shadow: none;
     }
 
+    :global([data-theme="light"] body) {
+        background-image: linear-gradient(155deg, rgba(200, 200, 200, 0.0), rgba(230, 225, 235, 0.5));
+        transition: var(--pico-transition);
+    }
+
+    :global([data-theme="dark"] body) {
+        background-image: linear-gradient(155deg, rgba(200, 200, 200, 0.0), rgba(205, 200, 210, 0.1));
+        transition: var(--pico-transition);
+    }
+
+    :global([data-theme="light"] .project-content) {
+        background-color: rgba(255, 255, 255, 0.7);
+        transition: var(--pico-transition);
+    }
+
+    :global([data-theme="dark"] .project-content) {
+        background-color: rgba(0, 0, 0, 0.7);
+        transition: var(--pico-transition);
+    }
+
     :global([data-theme="light"] .layout-mode-icon) {
         height: 50%;
         width: 50%;
@@ -91,26 +111,26 @@
         transition: var(--pico-transition);
     }
 
+    :global([data-theme="dark"] .img-invertible) {
+        filter: invert();
+        transition-property: filter;
+        transition: var(--pico-transition);
+    }
+
+    :global([data-theme="light"] .img-invertible) {
+        filter: none;
+        transition-property: filter;
+        transition: var(--pico-transition);
+    }
+
     :global(.slide-container) {
-        position: sticky;
         top: 0px;
-        margin-top: var(--margin);
         width: 100%;
         height: 100vh;
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: center;
-    }
-
-    :global([data-theme="light"] .background-gradient) {
-        background-image: linear-gradient(155deg, rgba(200, 200, 200, 0.0), rgba(230, 225, 235, 0.1));
-        transition: var(--pico-transition);
-    }
-
-    :global([data-theme="dark"] .background-gradient) {
-        background-image: linear-gradient(155deg, rgba(200, 200, 200, 0.0), rgba(205, 200, 210, 0.1));
-        transition: var(--pico-transition);
     }
 
     :global(div) {
@@ -127,6 +147,10 @@
 
     :global(h1, h2, h3, h4, h5, h6, p, ul, hr) {
         transition: var(--pico-transition);
+    }
+
+    :global(hr) {
+        filter: invert();
     }
 </style>
 
