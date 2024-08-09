@@ -85,6 +85,7 @@
         align-items: center;
         justify-content: center;
         gap: 5px;
+        cursor: pointer;
     }
 
     .hamburger-bar {
