@@ -1,25 +1,42 @@
 <script>
-    import { projects } from "$lib/assets/data.json"
-    import Project from "$lib/project.svelte"
-    import Footer from "$lib/footer.svelte"
+    import TextContainer from '$lib/text_container.svelte';
+    import { projects } from '$lib/data.js'
 </script>
 
-<div class="slide-container">
-    <div class="page-container">
-        <h1>Hi, I am Achat</h1>
-        <h4>I like game development and complex systems</h4>
+<title>Achat's Works</title>
+
+<TextContainer title={"Hi and welcome"} text={`
+    <p>My name is Achat and I'm a software and game from Germany with skills ranging from web development over library and software development to game and graphics programming.</p>
+    <p>I have a passion for creating complex systems and learning new technologies.</p>`
+}/>
+
+<div class="project-container">
+    <h3>Projects</h3>
+    <div class="flex-horizontal">
+        <div class="vertical-line"></div>
+        <div class="flex-vertical">
+            {#each projects as { slug, name }}
+                <p><a href="/{slug}">{name}</a></p>
+            {/each}
+        </div>
     </div>
 </div>
 
-{#each projects as { header, description, images }}
-    <Project {header} {description} {images}/>
-{/each}
-
-<Footer/>
-
 <style>
-    .page-container {
-        width: 80%;
-        text-align: center;
+    a:hover {
+        margin-left: 0.3rem;
+    }
+
+    .project-container {
+        width: 27%;
+    }
+
+    .vertical-line {
+        width: 7px;
+        max-width: 7px;
+        min-width: 7px;
+        background-color: var(--accent-colour);
+        margin: 0.5rem 1rem 0.5rem 0px;
+        border-radius: 1rem;
     }
 </style>

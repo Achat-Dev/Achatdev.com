@@ -1,157 +1,80 @@
 <script>
-    import "@picocss/pico/css/pico.css"
-    import { onMount } from "svelte"
+    import '../app.css'
+    import { onMount } from 'svelte';
+    import HamburgerMenu from '$lib/hamburger_menu.svelte';
+    import ModeIcon from '$lib/mode_icon.svelte';
 
-    function toggleTheme() {
-        const element = document.querySelector("html")
-        const theme = element.getAttribute("data-theme")
-        if (theme == "light") {
-            element.setAttribute("data-theme", "dark")
-            localStorage.setItem("data-theme", "dark")
-        }
-        else {
-            element.setAttribute("data-theme", "light")
-            localStorage.setItem("data-theme", "light")
-        }
+    /** @type {number} */
+    const maxOffset = 30;
+
+    /** @type {number} */
+    let screenWidth = 2.0;
+    /** @type {number} */
+    let screenHeight = 2.0;
+    /** @type {{ x: number, y: number }} */
+    let mousePosition = { x: 1.0, y: 1.0 };
+
+    /**
+     * Sets the mouse position
+     * @param {EventElement} event The svelte mouse move event
+     */
+    function setMousePositon(event) {
+        mousePosition.x = event.clientX;
+        mousePosition.y = event.clientY;
     }
 
     onMount(() => {
-        let dataTheme = localStorage.getItem("data-theme")
-        if (dataTheme === null) {
-            dataTheme = "light"
+        if (localStorage.getItem('dark-mode') === 'true') {
+            document.body.classList.add('dark-mode');
         }
-        document.documentElement.setAttribute("data-theme", dataTheme)
-    })
+    });
 </script>
 
-<title>Achats Works</title>
+<svelte:window bind:innerWidth={screenWidth} bind:innerHeight={screenHeight} on:mousemove={setMousePositon}/>
 
-<div class="layout-mode-container">
-    <button class="layout-mode-trigger" on:click={toggleTheme}>
-        <div class="layout-mode-icon"></div>
-    </button>
+{#if screenWidth <= 768}
+    <ModeIcon/>
+    <HamburgerMenu/>
+{/if}
+
+<div class="page-container">
+    <!-- Can't use functions for the offset for some reason -->
+    <div class="card-container" style="--x-offset: {-((mousePosition.x / screenWidth) - 0.5) * maxOffset}px; --y-offset: {-((mousePosition.y / screenHeight) - 0.5) * maxOffset}px">
+        {#if screenWidth > 768}
+            <ModeIcon/>
+            <HamburgerMenu/>
+        {/if}
+        <slot />
+    </div>
 </div>
 
 <style>
-    :root {
-        --pico-font-family: "Lato", Helvetica, Arial, sans-serif;
-        --pico-transition: 0.5s ease-in-out;
-        --icon-transition: 0.1s linear;
-        scroll-behavior: smooth;
-        transition: var(--pico-transition);
-        overflow-x: hidden;
-    }
-
-    .layout-mode-container {
-        position: fixed;
-        top: 10px;
-        right: 10px;
-        width: 22px;
-        height: 22px;
-        z-index: 999;
-    }
-
-    .layout-mode-trigger {
-        width: inherit;
-        height: inherit;
-        padding: 0;
-        margin: 0;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        color: transparent;
-        background-color: transparent;
-        border: none;
-        box-shadow: none;
-    }
-
-    :global([data-theme="light"] body) {
-        background-image: linear-gradient(155deg, rgba(200, 200, 200, 0.0), rgba(230, 225, 235, 0.5));
-        transition: var(--pico-transition);
-    }
-
-    :global([data-theme="dark"] body) {
-        background-image: linear-gradient(155deg, rgba(200, 200, 200, 0.0), rgba(205, 200, 210, 0.1));
-        transition: var(--pico-transition);
-    }
-
-    :global([data-theme="light"] .project-content) {
-        background-color: rgba(255, 255, 255, 0.7);
-        transition: var(--pico-transition);
-    }
-
-    :global([data-theme="dark"] .project-content) {
-        background-color: rgba(0, 0, 0, 0.7);
-        transition: var(--pico-transition);
-    }
-
-    :global([data-theme="light"] .layout-mode-icon) {
-        height: 50%;
-        width: 50%;
-        background-color: black;
-        border-radius: 50%;
-        box-shadow: 10px 0 0 -4px black,
-                -10px 0 0 -4px black,
-                0 10px 0 -4px black,
-                0 -10px 0 -4px black,
-                7.5px 7.5px 0 -4px black,
-                7.5px -7.5px 0 -4px black,
-                -7.5px 7.5px 0 -4px black,
-                -7.5px -7.5px 0 -4px black;
-        transition: var(--pico-transition);
-    }
-
-    :global([data-theme="dark"] .layout-mode-icon) {
-        height: 60%;
-        width: 60%;
-        background-color: transparent;
-        border-radius: 50%;
-        box-shadow: -4px 4px 0 0px white;
-        transform: translate(5px, -5px);
-        transition: var(--pico-transition);
-    }
-
-    :global([data-theme="dark"] .img-invertible) {
+    :global(body.dark-mode img.img-invertible) {
         filter: invert();
-        transition-property: filter;
-        transition: var(--pico-transition);
     }
 
-    :global([data-theme="light"] .img-invertible) {
-        filter: none;
-        transition-property: filter;
-        transition: var(--pico-transition);
-    }
-
-    :global(.slide-container) {
-        top: 0px;
-        width: 100%;
+    .page-container {
+        width: 100vw;
         height: 100vh;
         display: flex;
-        flex-direction: column;
-        justify-content: center;
+        flex-direction: row;
         align-items: center;
+        justify-content: center;
     }
 
-    :global(div) {
-        overflow: hidden;
+    .card-container {
+        width: 55%;
+        min-height: 50%;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        border-radius: 2rem;
+        filter: drop-shadow(var(--x-offset) var(--y-offset) 2rem var(--shadow-colour));
+        gap: 3rem;
     }
 
-    :global(a:hover) {
-        transition: var(--icon-transition);
-    }
-    
-    :global(a:not(a:hover)) {
-        transition: var(--icon-transition);
-    }
-
-    :global(h1, h2, h3, h4, h5, h6, p, ul, hr) {
-        transition: var(--pico-transition);
-    }
-
-    :global(hr) {
-        filter: invert();
+    :global(.justify-center) {
+        justify-content: center !important;
     }
 </style>
-
-<slot/>
