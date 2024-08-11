@@ -27,7 +27,7 @@ export const projects = [
         slug: 'Out_of_Vengeance',
         name: 'Out of Vengeance',
         description: `
-            <p>An unfinished game I developed in Unity with C#, inspired by Hollow Knight and God of War. I never finished the project due to scoping issues and no clear vision of finished product.
+            <p>An unfinished game I developed in Unity with C#, inspired by Hollow Knight and God of War. I never finished the project due to scoping issues and no clear vision of the finished product.
             <br>Nevertheless, it had some pretty cool combat mechanics, so here is a little <a href='https://www.youtube.com/watch?v=tE_R-34G-Uc' target='_blank'>demo video</a>.</p>
             <p><strong>Features:</strong></p>
             <ul>
@@ -98,10 +98,10 @@ export const projects = [
         name: 'The Scuffed Series',
         description: `
         <p>This is a series of really small video games I made as a learning experience with Unity. Most of these games were made in a single day and focused on different mechanics so I could try out different things.</p>
-        <p>The best entires are
-            <a href="https://achat.itch.io/the-scuffed-series-15" target="_blank">No. 15</a>,
-            <a href="https://achat.itch.io/the-scuffed-series-17" target="_blank">No. 17</a> and
-            <a href="https://achat.itch.io/the-scuffed-series-19" target="_blank">No. 19</a>.
+        <p>The best entries are
+            <a href="https://achat.itch.io/the-scuffed-series-15" target="_blank">no. 15</a>,
+            <a href="https://achat.itch.io/the-scuffed-series-17" target="_blank">no. 17</a> and
+            <a href="https://achat.itch.io/the-scuffed-series-19" target="_blank">no. 19</a>.
         </p>
         <div style='display: flex; justify-content: center; align-items: center;'>
             <a href='https://achat.itch.io/' target='_blank'>View on itch.io</a>

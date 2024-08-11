@@ -6,7 +6,7 @@
 <title>Achat's Works</title>
 
 <TextContainer title={"Hi and welcome"} text={`
-    <p>My name is Achat and I'm a software and game from Germany with skills ranging from web development over library and software development to game and graphics programming.</p>
+    <p>My name is Achat and I'm a software and game developer from Germany with skills ranging from web development over library and software development to game and graphics programming.</p>
     <p>I have a passion for creating complex systems and learning new technologies.</p>`
 }/>
 
