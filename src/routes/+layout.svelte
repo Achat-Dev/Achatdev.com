@@ -5,9 +5,6 @@
     import ModeIcon from '$lib/mode_icon.svelte';
 
     /** @type {number} */
-    const maxOffset = 30;
-
-    /** @type {number} */
     let screenWidth = 2.0;
     /** @type {number} */
     let screenHeight = 2.0;
@@ -38,8 +35,7 @@
 {/if}
 
 <div class="page-container">
-    <!-- Can't use functions for the offset for some reason -->
-    <div class="card-container" style="--x-offset: {-((mousePosition.x / screenWidth) - 0.5) * maxOffset}px; --y-offset: {-((mousePosition.y / screenHeight) - 0.5) * maxOffset}px">
+    <div class="card-container">
         {#if screenWidth > 768}
             <ModeIcon/>
             <HamburgerMenu/>
@@ -70,7 +66,7 @@
         align-items: center;
         justify-content: space-between;
         border-radius: 2rem;
-        filter: drop-shadow(var(--x-offset) var(--y-offset) 2rem var(--shadow-colour));
+        filter: drop-shadow(0 0 2rem var(--shadow-colour));
         gap: 3rem;
     }
 
