@@ -1,35 +1,32 @@
-<script>
+<script lang="ts">
     import { base } from '$app/paths';
     import { beforeNavigate, afterNavigate } from '$app/navigation';
     import { onDestroy } from 'svelte';
     import TextContainer from '$lib/text_container.svelte';
 
-    export let data;
+    let { props }: { props: Project } = $props();
 
-    /** @type {number} */
-	const duration = 10000;
+    let isSlideshowFullscreen: boolean = $state(false);
+    let currentIndex: number = $state(0);
 
-    /** @type {HTMLDivElement} */
-    let imageContainer;
-    /** @type {HTMLCollectionOf<HTMLDivElement>} */
-    let slideshowButtons;
-    /** @type {boolean} */
-    let isSlideshowFullscreen = false;
-    /** @type {number} */
-    let currentIndex = 0;
-    /** @type {number} */
-    let elapsed = 0;
-    /** @type {DOMHighResTimeStamp} */
-	let lastTime;
-    /** @type {number} */
-	let frame;
+    let imageContainer: HTMLDivElement;
+    let slideshowButtons: HTMLCollectionOf<Element>;
+    let elapsed: number = 0;
+	let lastTime: DOMHighResTimeStamp = 0;
+	let frame: number;
+
+    const duration: number = 10000;
 
     /**
      * Sets the index of the currently shown image
-     * @param {number} index The target index
+     * @param index The target index
      */
-    function setCurrentIndex(index) {
-        index = Math.max(Math.min(index, data.images.length), 0);
+    function setCurrentIndex(index: number): void {
+        if (!slideshowButtons) {
+            return;
+        }
+
+        index = Math.max(Math.min(index, props.images.length), 0);
 
         if (currentIndex != index) {
             slideshowButtons[currentIndex].classList.remove('slideshow-button-highlighted');
@@ -42,21 +39,23 @@
     /**
      * Moves the slideshow to be in fullscreen
      */
-    function openFullscreenSlideshow() {
+    function openFullscreenSlideshow(): void {
         imageContainer.classList.add('image-container-fullscreen');
         document.getElementsByClassName('card-container')[0].classList.add('justify-center');
         isSlideshowFullscreen = true;
-        document.getElementsByClassName('accordion-container')[0].style.zIndex = '0';
+        const accordion = document.getElementsByClassName('accordion-container')[0] as HTMLElement;
+        accordion.style.zIndex = '0';
     }
 
     /**
      * Moves the slideshow back from fullscreen to its normal position
      */
-    function closeFullscreenSlideshow() {
+    function closeFullscreenSlideshow(): void {
         imageContainer.classList.remove('image-container-fullscreen');
         document.getElementsByClassName('card-container')[0].classList.remove('justify-center');
         isSlideshowFullscreen = false;
-        document.getElementsByClassName('accordion-container')[0].style.zIndex = '999';
+        const accordion = document.getElementsByClassName('accordion-container')[0] as HTMLElement;
+        accordion.style.zIndex = '999';
     }
 
     beforeNavigate(() => {
@@ -66,7 +65,7 @@
     });
 
     afterNavigate(() => {
-        if (data.images.length > 1) {
+        if (props.images.length > 1) {
             slideshowButtons = document.getElementsByClassName('slideshow-button');
             for (const slideshowButton of slideshowButtons) {
                 slideshowButton.classList.remove('slideshow-button-highlighted');
@@ -91,29 +90,29 @@
         const time = window.performance.now();
 		elapsed += Math.min(time - lastTime, duration - elapsed);
         if (elapsed >= duration) {
-            setCurrentIndex(currentIndex == data.images.length - 1 ? 0 : currentIndex + 1);
+            setCurrentIndex(currentIndex == props.images.length - 1 ? 0 : currentIndex + 1);
         }
 		
         lastTime = time;
 	})();
 </script>
 
-<title>{data.name}</title>
+<title>{props.name}</title>
 
-<TextContainer title={data.name} text={data.description}/>
+<TextContainer title={props.name} text={props.description}/>
 <div class="image-container" bind:this={imageContainer}>
     {#if isSlideshowFullscreen}
-        <button class="invisible-button close-fullscreen-button" on:click={closeFullscreenSlideshow}></button>
-        <img class="fullscreen-image" src={base}/{data.images[currentIndex].src} alt={data.images[currentIndex].alt}>
+        <button class="invisible-button close-fullscreen-button" onclick={closeFullscreenSlideshow}></button>
+        <img class="fullscreen-image" src="{base}/{props.images[currentIndex].src}" alt={props.images[currentIndex].alt}>
     {:else}
-        <button class="invisible-button image-button" on:click={openFullscreenSlideshow}>
-            <img src={base}/{data.images[currentIndex].src} alt={data.images[currentIndex].alt} >
+        <button class="invisible-button image-button" onclick={openFullscreenSlideshow}>
+            <img src="{base}/{props.images[currentIndex].src}" alt={props.images[currentIndex].alt} >
         </button>
     {/if}
-    {#if data.images.length > 1}
+    {#if props.images.length > 1}
         <div class="button-container">
-            {#each { length: data.images.length } as _, i}
-                <button class="invisible-button slideshow-button" on:click={() => setCurrentIndex(i)}></button>
+            {#each { length: props.images.length } as _, i}
+                <button class="invisible-button slideshow-button" onclick={() => setCurrentIndex(i)}></button>
             {/each}
         </div>
     {/if}

@@ -1,8 +1,8 @@
-<script>
+<script lang="ts">
     /**
      * Toggles the dark mode state and writes the value to the local storage
      */
-    function toggleDarkMode() {
+    function toggleDarkMode(): void {
         const classList = document.body.classList;
         if (classList.contains('dark-mode')) {
             localStorage.setItem('dark-mode', 'false');
@@ -57,18 +57,6 @@
                 transition: var(--transition);
     }
 
-    body:not(.dark-mode) .mode-button:hover .mode-icon {
-        background-color: var(--accent-colour);
-        box-shadow: 10px 0 0 -4px var(--accent-colour),
-                -10px 0 0 -4px var(--accent-colour),
-                0 10px 0 -4px var(--accent-colour),
-                0 -10px 0 -4px var(--accent-colour),
-                7.5px 7.5px 0 -4px var(--accent-colour),
-                7.5px -7.5px 0 -4px var(--accent-colour),
-                -7.5px 7.5px 0 -4px var(--accent-colour),
-                -7.5px -7.5px 0 -4px var(--accent-colour);
-    }
-
     :global(body.dark-mode .mode-icon) {
         height: 60% !important;
         width: 60% !important;
@@ -80,5 +68,17 @@
 
     :global(body.dark-mode .mode-button:hover .mode-icon) {
         box-shadow: -4px 4px 0 0px var(--accent-colour) !important;
+    }
+
+    :global(body:not(.dark-mode) .mode-button:hover .mode-icon) {
+        background-color: var(--accent-colour);
+        box-shadow: 10px 0 0 -4px var(--accent-colour),
+                -10px 0 0 -4px var(--accent-colour),
+                0 10px 0 -4px var(--accent-colour),
+                0 -10px 0 -4px var(--accent-colour),
+                7.5px 7.5px 0 -4px var(--accent-colour),
+                7.5px -7.5px 0 -4px var(--accent-colour),
+                -7.5px 7.5px 0 -4px var(--accent-colour),
+                -7.5px -7.5px 0 -4px var(--accent-colour);
     }
 </style>
