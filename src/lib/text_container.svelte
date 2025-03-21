@@ -1,8 +1,5 @@
-<script>
-    /** @type {string} */
-    export let title;
-    /** @type {string} */
-    export let text;
+<script lang="ts">
+    let { title, text }: { title: string, text: string } = $props();
 </script>
 
 <div class="text-container">

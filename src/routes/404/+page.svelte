@@ -1,5 +1,4 @@
-<script>
-    import { page } from '$app/stores';
+<script lang="ts">
     import { onMount, onDestroy } from 'svelte';
 
     onMount(() => {
@@ -11,10 +10,10 @@
     });
 </script>
 
-<title>Oh no, it's a [{$page.status}]</title>
+<title>Oh no, it's a [404]</title>
 
 <div class="fallback-container">
-    <h1>[{$page.status}]<br>{$page.error.message}</h1>
+    <h1>[404]<br>Not found</h1>
     <h4>Something's wrong... I'll call the admin!</h4>
 </div>
 
