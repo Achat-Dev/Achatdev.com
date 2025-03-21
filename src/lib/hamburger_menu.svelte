@@ -1,20 +1,24 @@
 <!-- Hamburger icon animation based on the one from Erik Terwan (https://codepen.io/erikterwan/pen/EVzeRP), licensed under the MIT license -->
 
-<script lang="ts">
+<script>
     import { onMount } from "svelte";
     import { slide } from "svelte/transition";
     import { projects, socialMedia } from '$lib/data.js'
 
-    let isOpen: boolean = $state(false);
-    let screenWidth: number = $state(0);
-    let axis: "x" | "y" = $derived(screenWidth <= 768 ? 'y' : 'x');
+    /** @type {boolean} */
+    let isOpen = false;
+    /** @type {HTMLDivElement} */
+    let hamburgerBars;
+    /** @type {number} */
+    let screenWidth;
 
-    let hamburgerBars: HTMLCollectionOf<Element>;
+    /** @type {string} */
+    $: axis = screenWidth <= 768 ? 'y' : 'x';
 
     /**
      * Toggles the open state of the hamburger menu
      */
-    function toggleIsOpen(): void {
+    function toggleIsOpen() {
         isOpen = !isOpen;
         for (let i = 0; i < hamburgerBars.length; i++) {
             hamburgerBars[i].classList.toggle(`hamburger-bar-selected-${i}`);
@@ -28,7 +32,7 @@
 
 <svelte:window bind:innerWidth={screenWidth}/>
 
-<button class="invisible-button accordion-container" onclick={toggleIsOpen}>
+<button class="invisible-button accordion-container" on:click={toggleIsOpen}>
     <div class="hamburger-icon">
         <span class="hamburger-bar bar-0"></span>
         <span class="hamburger-bar bar-1"></span>

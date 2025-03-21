@@ -1,9 +1,10 @@
 import { error } from '@sveltejs/kit';
 import { projects } from '$lib/data.js'
 
-const slug: string = 'Out_of_Vengeance';
+/** @type {string} */
+const slug = 'Out_of_Vengeance';
 
-export function load(): Project {
+export function load() {
     for (const project of projects) {
         if (project.slug === slug) {
             return project;

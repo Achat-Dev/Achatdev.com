@@ -1,18 +1,21 @@
-<script lang="ts">
+<script>
     import '../app.css'
     import { onMount } from 'svelte';
     import HamburgerMenu from '$lib/hamburger_menu.svelte';
     import ModeIcon from '$lib/mode_icon.svelte';
 
-    let screenWidth: number = 2.0;
-    let screenHeight: number = 2.0;
-    let mousePosition: Position = { x: 1.0, y: 1.0 };
+    /** @type {number} */
+    let screenWidth = 2.0;
+    /** @type {number} */
+    let screenHeight = 2.0;
+    /** @type {{ x: number, y: number }} */
+    let mousePosition = { x: 1.0, y: 1.0 };
 
     /**
      * Sets the mouse position
-     * @param event The svelte mouse move event
+     * @param {EventElement} event The svelte mouse move event
      */
-    function setMousePositon(event: MouseEvent): void {
+    function setMousePositon(event) {
         mousePosition.x = event.clientX;
         mousePosition.y = event.clientY;
     }

@@ -1,4 +1,4 @@
-export const projects: Project[] = [
+export const projects = [
     {
         slug: 'Nebula',
         name: 'Nebula',
@@ -131,7 +131,7 @@ export const projects: Project[] = [
     }
 ];
 
-export const socialMedia: SocialMediaProps[] = [
+export const socialMedia = [
     {
         url: 'https://github.com/Achat-Dev',
         name: 'GitHub'
