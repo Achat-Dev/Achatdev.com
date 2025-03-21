@@ -5,7 +5,8 @@
 	"type": "module",
 	"scripts": {
 		"dev": "vite dev",
-		"build": "vite build && mv build/404.html build/fallback.html",
+		"build": "vite build",
+		"postbuild": "mv build/fallback.html build/404.html",
 		"preview": "vite preview"
 	},
 	"devDependencies": {
