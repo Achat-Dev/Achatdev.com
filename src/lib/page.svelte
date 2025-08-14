@@ -3,6 +3,7 @@
     import { beforeNavigate, afterNavigate } from '$app/navigation';
     import { onDestroy } from 'svelte';
     import TextContainer from '$lib/text_container.svelte';
+    import { variables } from './variables.svelte';
 
     let { props }: { props: Project } = $props();
 
@@ -114,7 +115,7 @@
 </svelte:head>
 
 <TextContainer title={props.name} text={props.description}/>
-<div class="image-container" bind:this={imageContainer}>
+<div class="image-container" bind:this={imageContainer} style="--fullscreen-width: {variables.contentWidth}px; --fullscreen-height: {variables.contentHeight}px">
     {#if isSlideshowFullscreen}
         <button class="invisible-button close-fullscreen-button" onclick={closeFullscreenSlideshow}></button>
         <img class="fullscreen-image" src="{base}/{props.images[currentIndex].src}" alt={props.images[currentIndex].alt}>
@@ -141,22 +142,25 @@
         width: 70%;
     }
 
-    :global(.image-container-fullscreen) {
+    :global(div.image-container.image-container-fullscreen) {
         display: flex;
         flex-direction: column;
         align-items: center;
         justify-content: center;
-        position: absolute !important;
-        width: 100vw !important;
-        height: 100vh !important;
-        background-color: var(--transparent-background-colour);
+        position: absolute;
+        width: var(--fullscreen-width) !important;
+        height: var(--fullscreen-height) !important;
         z-index: 999;
     }
 
     .close-fullscreen-button {
         position: absolute;
-        width: 100vw;
-        height: 100vh;
+        width: 100%;
+        height: 100%;
+        padding: 0;
+        background-color: var(--background-colour);
+        background-image: var(--background-gradient);
+        opacity: 90%;
         z-index: -999;
     }
 

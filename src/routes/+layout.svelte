@@ -3,20 +3,13 @@
     import { onMount } from 'svelte';
     import HamburgerMenu from '$lib/hamburger_menu.svelte';
     import ModeIcon from '$lib/mode_icon.svelte';
+    import { variables } from '$lib/variables.svelte';
 
-    let screenWidth: number = 2.0;
-    let screenHeight: number = 2.0;
-    let mousePosition: Position = { x: 1.0, y: 1.0 };
+    let { children } = $props();
 
-    /**
-     * Sets the mouse position
-     * @param event The svelte mouse move event
-     */
-    function setMousePositon(event: MouseEvent): void {
-        mousePosition.x = event.clientX;
-        mousePosition.y = event.clientY;
-    }
-
+    let screenWidth: number = $state(2.0);
+    let screenHeight: number = $state(2.0);
+    
     onMount(() => {
         if (localStorage.getItem('dark-mode') == null) {
             if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
@@ -30,20 +23,20 @@
     });
 </script>
 
-<svelte:window bind:innerWidth={screenWidth} bind:innerHeight={screenHeight} on:mousemove={setMousePositon}/>
+<svelte:window bind:innerWidth={screenWidth} bind:innerHeight={screenHeight}/>
 
 {#if screenWidth <= 768}
     <ModeIcon/>
     <HamburgerMenu/>
 {/if}
 
-<div class="page-container">
+<div class="page-container" bind:clientWidth={variables.contentWidth} bind:clientHeight={variables.contentHeight}>
     <div class="card-container">
         {#if screenWidth > 768}
             <ModeIcon/>
             <HamburgerMenu/>
         {/if}
-        <slot />
+        {@render children()}
     </div>
 </div>
 
@@ -62,15 +55,16 @@
     }
 
     .card-container {
+        position: relative;
         width: 55%;
         min-height: 50%;
         display: flex;
         flex-direction: row;
         align-items: center;
         justify-content: space-between;
+        gap: 3rem;
         border-radius: 2rem;
         filter: drop-shadow(0 0 2rem var(--shadow-colour));
-        gap: 3rem;
     }
 
     :global(.justify-center) {

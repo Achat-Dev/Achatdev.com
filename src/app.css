@@ -2,11 +2,11 @@
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     --background-colour: #fafafa;
     --background-gradient: linear-gradient(135deg, var(--background-colour), #e8cfbd);
-    --transparent-background-colour: #fafafa99;
+    --transparent-background-colour: #fafafaee;
     --text-colour: #323232;
     --accent-colour: #e2b08c;
     --highlight-colour: #ed9c4c;
-    --shadow-colour: #000000;
+    --shadow-colour: #00000020;
     --transition: 0.5s;
     --icon-transition: 0.2s;
 }
@@ -14,9 +14,9 @@
 .dark-mode {
     --background-colour: #323232;
     --background-gradient: linear-gradient(135deg, var(--background-colour), #362a21);
-    --transparent-background-colour: #32323299;
+    --transparent-background-colour: #323232ee;
     --text-colour: #f5f5f5;
-    --shadow-colour: #909090;
+    --shadow-colour: #90909030;
 }
 
 body {
