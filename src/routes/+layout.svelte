@@ -18,7 +18,13 @@
     }
 
     onMount(() => {
-        if (localStorage.getItem('dark-mode') === 'true') {
+        if (localStorage.getItem('dark-mode') == null) {
+            if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+                document.body.classList.add('dark-mode');
+                localStorage.setItem('dark-mode', 'true');
+            }
+        }
+        else if (localStorage.getItem('dark-mode') === 'true') {
             document.body.classList.add('dark-mode');
         }
     });
