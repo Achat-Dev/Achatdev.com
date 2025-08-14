@@ -109,7 +109,9 @@
 	})();
 </script>
 
-<title>{props.name}</title>
+<svelte:head>
+    <title>{props.name}</title>
+</svelte:head>
 
 <TextContainer title={props.name} text={props.description}/>
 <div class="image-container" bind:this={imageContainer}>

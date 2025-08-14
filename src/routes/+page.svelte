@@ -3,7 +3,9 @@
     import { projects } from '$lib/data.js'
 </script>
 
-<title>Achat's Works</title>
+<svelte:head>
+    <title>Achat's Works</title>
+</svelte:head>
 
 <TextContainer title={"Hi and welcome"} text={`
     <p>My name is Achat and I'm a software and game developer from Germany with skills ranging from web development over library and software development to game and graphics programming.</p>

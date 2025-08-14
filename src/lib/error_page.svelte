@@ -17,7 +17,9 @@
     });
 </script>
 
-<title>Oh no, it's a [{status}]</title>
+<svelte:head>
+    <title>Oh no, it's a [{status}]</title>
+</svelte:head>
 
 <div class="fallback-container">
     <h1>[{status}]<br>{message}</h1>
