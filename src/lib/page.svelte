@@ -45,6 +45,7 @@
         isSlideshowFullscreen = true;
         const accordion = document.getElementsByClassName('accordion-container')[0] as HTMLElement;
         accordion.style.zIndex = '0';
+        document.addEventListener("keydown", onKeyDown);
     }
 
     /**
@@ -56,6 +57,17 @@
         isSlideshowFullscreen = false;
         const accordion = document.getElementsByClassName('accordion-container')[0] as HTMLElement;
         accordion.style.zIndex = '999';
+    }
+
+    /**
+     * Key down listener to close the fullscreen slideshow
+     * @param event
+     */
+    function onKeyDown(event: KeyboardEvent) {
+        if (event.key === 'Escape') {
+            closeFullscreenSlideshow();
+            document.removeEventListener("keydown", onKeyDown);
+        }
     }
 
     beforeNavigate(() => {
