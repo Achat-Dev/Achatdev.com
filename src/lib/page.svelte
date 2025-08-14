@@ -58,6 +58,7 @@
         isSlideshowFullscreen = false;
         const accordion = document.getElementsByClassName('accordion-container')[0] as HTMLElement;
         accordion.style.zIndex = '999';
+        document.removeEventListener("keydown", onKeyDown);
     }
 
     /**
@@ -67,7 +68,6 @@
     function onKeyDown(event: KeyboardEvent) {
         if (event.key === 'Escape') {
             closeFullscreenSlideshow();
-            document.removeEventListener("keydown", onKeyDown);
         }
     }
 
