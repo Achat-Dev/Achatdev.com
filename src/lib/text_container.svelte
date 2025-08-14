@@ -1,10 +1,11 @@
 <script lang="ts">
     interface TextContainerProps {
         title: string;
-        text: string;
+        text?: string;
+        children?: any;
     }
 
-    let { title, text }: TextContainerProps = $props();
+    let { title, text, children }: TextContainerProps = $props();
 </script>
 
 <div class="text-container">
@@ -12,7 +13,12 @@
     <div class="flex-horizontal">
         <div class="vertical-line"></div>
         <div class="flex-vertical">
-            {@html text}
+            {#if text}
+                {@html text}
+            {/if}
+            {#if children}
+                {@render children()}
+            {/if}
         </div>
     </div>
 </div>

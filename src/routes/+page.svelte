@@ -7,10 +7,10 @@
     <title>Achat's Works</title>
 </svelte:head>
 
-<TextContainer title={"Hi and welcome"} text={`
+<TextContainer title={"Hi and welcome"}>
     <p>My name is Achat and I'm a software and game developer from Germany with skills ranging from web development over library and software development to game and graphics programming.</p>
-    <p>I have a passion for creating complex systems and learning new technologies.</p>`
-}/>
+    <p>I have a passion for creating complex systems and learning new technologies.</p>
+</TextContainer>
 
 <div class="project-container">
     <h3>Projects</h3>

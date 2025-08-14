@@ -1,3 +1,20 @@
+export interface ImageProps {
+    src: string;
+    alt: string;
+}
+
+export interface SocialMediaProps {
+    url: string;
+    name: string;
+}
+
+export interface Project {
+    slug: string;
+    name: string;
+    description: any;
+    images: ImageProps[];
+};
+
 export const projects: Project[] = [
     {
         slug: 'Nebula',

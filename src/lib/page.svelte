@@ -2,10 +2,15 @@
     import { base } from '$app/paths';
     import { beforeNavigate, afterNavigate } from '$app/navigation';
     import { onDestroy } from 'svelte';
-    import TextContainer from '$lib/text_container.svelte';
     import { variables } from './variables.svelte';
+    import type { Project } from './data';
+    import TextContainer from '$lib/text_container.svelte';
 
-    let { props }: { props: Project } = $props();
+    interface PageProps {
+        props: Project;
+    }
+
+    let { props }: PageProps = $props();
 
     let isSlideshowFullscreen: boolean = $state(false);
     let currentIndex: number = $state(0);
