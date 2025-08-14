@@ -1,5 +1,6 @@
 <script lang="ts">
     import { onMount, onDestroy } from 'svelte';
+    import { page } from '$app/state';
 
     onMount(() => {
         document.getElementsByClassName('card-container')[0].classList.add('justify-center');
@@ -10,10 +11,10 @@
     });
 </script>
 
-<title>Oh no, it's a [404]</title>
+<title>Oh no, it's a [{page.status}]</title>
 
 <div class="fallback-container">
-    <h1>[404]<br>Not found</h1>
+    <h1>[{page.status}]<br>{page.error?.message}</h1>
     <h4>Something's wrong... I'll call the admin!</h4>
 </div>
 
