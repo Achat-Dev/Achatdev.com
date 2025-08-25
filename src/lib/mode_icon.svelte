@@ -4,13 +4,13 @@
      */
     function toggleDarkMode(): void {
         const classList = document.body.classList;
-        if (classList.contains('dark-mode')) {
-            localStorage.setItem('dark-mode', 'false');
+        if (classList.contains("dark-mode")) {
+            localStorage.setItem("dark-mode", "false");
         }
         else {
-            localStorage.setItem('dark-mode', 'true');
+            localStorage.setItem("dark-mode", "true");
         }
-        classList.toggle('dark-mode');
+        classList.toggle("dark-mode");
     }
 </script>
 

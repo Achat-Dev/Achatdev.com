@@ -1,16 +1,15 @@
 <script lang="ts">
-    import { base } from '$app/paths';
-    import { beforeNavigate, afterNavigate } from '$app/navigation';
-    import { onDestroy } from 'svelte';
-    import { variables } from './variables.svelte';
-    import type { Project } from './data';
-    import TextContainer from '$lib/text_container.svelte';
+    import { beforeNavigate, afterNavigate } from "$app/navigation";
+    import { onDestroy } from "svelte";
+    import TextContainer from "$lib/text_container.svelte";
+    import type { Project } from "$lib/data";
+    import { variables } from "$lib/variables.svelte";
 
     interface PageProps {
-        props: Project;
+        data: Project;
     }
 
-    let { props }: PageProps = $props();
+    let { data }: PageProps = $props();
 
     let isSlideshowFullscreen: boolean = $state(false);
     let currentIndex: number = $state(0);
@@ -32,11 +31,11 @@
             return;
         }
 
-        index = Math.max(Math.min(index, props.images.length), 0);
+        index = Math.max(Math.min(index, data.images.length), 0);
 
         if (currentIndex != index) {
-            slideshowButtons[currentIndex].classList.remove('slideshow-button-highlighted');
-            slideshowButtons[index].classList.add('slideshow-button-highlighted');
+            slideshowButtons[currentIndex].classList.remove("slideshow-button-highlighted");
+            slideshowButtons[index].classList.add("slideshow-button-highlighted");
         }
         currentIndex = index;
         elapsed = 0;
@@ -46,11 +45,11 @@
      * Moves the slideshow to be in fullscreen
      */
     function openFullscreenSlideshow(): void {
-        imageContainer.classList.add('image-container-fullscreen');
-        document.getElementsByClassName('card-container')[0].classList.add('justify-center');
+        imageContainer.classList.add("image-container-fullscreen");
+        document.getElementsByClassName("card-container")[0].classList.add("justify-center");
         isSlideshowFullscreen = true;
-        const accordion = document.getElementsByClassName('accordion-container')[0] as HTMLElement;
-        accordion.style.zIndex = '0';
+        const accordion = document.getElementsByClassName("accordion-container")[0] as HTMLElement;
+        accordion.style.zIndex = "0";
         document.addEventListener("keydown", onKeyDown);
     }
 
@@ -58,11 +57,11 @@
      * Moves the slideshow back from fullscreen to its normal position
      */
     function closeFullscreenSlideshow(): void {
-        imageContainer.classList.remove('image-container-fullscreen');
-        document.getElementsByClassName('card-container')[0].classList.remove('justify-center');
+        imageContainer.classList.remove("image-container-fullscreen");
+        document.getElementsByClassName("card-container")[0].classList.remove("justify-center");
         isSlideshowFullscreen = false;
-        const accordion = document.getElementsByClassName('accordion-container')[0] as HTMLElement;
-        accordion.style.zIndex = '999';
+        const accordion = document.getElementsByClassName("accordion-container")[0] as HTMLElement;
+        accordion.style.zIndex = "999";
         document.removeEventListener("keydown", onKeyDown);
     }
 
@@ -71,7 +70,7 @@
      * @param event
      */
     function onKeyDown(event: KeyboardEvent) {
-        if (event.key === 'Escape') {
+        if (event.key === "Escape") {
             closeFullscreenSlideshow();
         }
     }
@@ -83,12 +82,12 @@
     });
 
     afterNavigate(() => {
-        if (props.images.length > 1) {
-            slideshowButtons = document.getElementsByClassName('slideshow-button');
+        if (data.images.length > 1) {
+            slideshowButtons = document.getElementsByClassName("slideshow-button");
             for (const slideshowButton of slideshowButtons) {
-                slideshowButton.classList.remove('slideshow-button-highlighted');
+                slideshowButton.classList.remove("slideshow-button-highlighted");
             }
-            slideshowButtons[0].classList.add('slideshow-button-highlighted');
+            slideshowButtons[0].classList.add("slideshow-button-highlighted");
         }
 
         currentIndex = 0;
@@ -108,30 +107,31 @@
         const time = window.performance.now();
 		elapsed += Math.min(time - lastTime, duration - elapsed);
         if (elapsed >= duration) {
-            setCurrentIndex(currentIndex == props.images.length - 1 ? 0 : currentIndex + 1);
+            setCurrentIndex(currentIndex == data.images.length - 1 ? 0 : currentIndex + 1);
         }
 		
         lastTime = time;
 	})();
 </script>
 
+
 <svelte:head>
-    <title>{props.name}</title>
+    <title>{data.name}</title>
 </svelte:head>
 
-<TextContainer title={props.name} text={props.description}/>
+<TextContainer title={data.name} text={data.description}/>
 <div class="image-container" bind:this={imageContainer} style="--fullscreen-width: {variables.contentWidth}px; --fullscreen-height: {variables.contentHeight}px">
     {#if isSlideshowFullscreen}
         <button class="invisible-button close-fullscreen-button" onclick={closeFullscreenSlideshow}></button>
-        <img class="fullscreen-image" src="{base}/{props.images[currentIndex].src}" alt={props.images[currentIndex].alt}>
+        <img class="fullscreen-image" src="{data.images[currentIndex].src}" alt={data.images[currentIndex].alt}>
     {:else}
         <button class="invisible-button image-button" onclick={openFullscreenSlideshow}>
-            <img src="{base}/{props.images[currentIndex].src}" alt={props.images[currentIndex].alt} >
+            <img src="{data.images[currentIndex].src}" alt={data.images[currentIndex].alt} >
         </button>
     {/if}
-    {#if props.images.length > 1}
+    {#if data.images.length > 1}
         <div class="button-container">
-            {#each { length: props.images.length } as _, i}
+            {#each { length: data.images.length } as _, i}
                 <button class="invisible-button slideshow-button" onclick={() => setCurrentIndex(i)}></button>
             {/each}
         </div>
@@ -144,7 +144,10 @@
     }
 
     img.fullscreen-image {
-        width: 70%;
+        width: auto;
+        height: auto;
+        max-width: 80%;
+        max-height: 80%;
     }
 
     :global(div.image-container.image-container-fullscreen) {

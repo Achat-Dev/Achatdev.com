@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { onMount, onDestroy } from 'svelte';
+    import { onMount, onDestroy } from "svelte";
 
     interface ErrorPageProps {
         status: number;
@@ -9,11 +9,11 @@
     let { status, message }: ErrorPageProps = $props();
 
     onMount(() => {
-        document.getElementsByClassName('card-container')[0].classList.add('justify-center');
+        document.getElementsByClassName("card-container")[0].classList.add("justify-center");
     });
 
     onDestroy(() => {
-        document.getElementsByClassName('card-container')[0].classList.remove('justify-center');
+        document.getElementsByClassName("card-container")[0].classList.remove("justify-center");
     });
 </script>
 

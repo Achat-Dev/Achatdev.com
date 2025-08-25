@@ -1,6 +1,6 @@
 <script lang="ts">
-    import TextContainer from '$lib/text_container.svelte';
-    import { projects } from '$lib/data.js'
+    import TextContainer from "$lib/text_container.svelte";
+    import { projects } from "$lib/data.js"
 </script>
 
 <svelte:head>

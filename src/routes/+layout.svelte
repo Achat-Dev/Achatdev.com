@@ -1,9 +1,9 @@
 <script lang="ts">
-    import '../app.css'
-    import { onMount } from 'svelte';
-    import HamburgerMenu from '$lib/hamburger_menu.svelte';
-    import ModeIcon from '$lib/mode_icon.svelte';
-    import { variables } from '$lib/variables.svelte';
+    import "../app.css"
+    import { onMount } from "svelte";
+    import HamburgerMenu from "$lib/hamburger_menu.svelte";
+    import ModeIcon from "$lib/mode_icon.svelte";
+    import { variables } from "$lib/variables.svelte";
 
     let { children } = $props();
 
@@ -11,14 +11,14 @@
     let screenHeight: number = $state(2.0);
     
     onMount(() => {
-        if (localStorage.getItem('dark-mode') == null) {
-            if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-                document.body.classList.add('dark-mode');
-                localStorage.setItem('dark-mode', 'true');
+        if (localStorage.getItem("dark-mode") == null) {
+            if (window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches) {
+                document.body.classList.add("dark-mode");
+                localStorage.setItem("dark-mode", "true");
             }
         }
-        else if (localStorage.getItem('dark-mode') === 'true') {
-            document.body.classList.add('dark-mode');
+        else if (localStorage.getItem("dark-mode") === "true") {
+            document.body.classList.add("dark-mode");
         }
     });
 </script>

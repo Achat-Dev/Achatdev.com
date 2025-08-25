@@ -3,11 +3,11 @@
 <script lang="ts">
     import { onMount } from "svelte";
     import { slide } from "svelte/transition";
-    import { projects, socialMedia } from '$lib/data.js'
+    import { projects, socialMedia } from "$lib/data.js"
 
     let isOpen: boolean = $state(false);
     let screenWidth: number = $state(0);
-    let axis: "x" | "y" = $derived(screenWidth <= 768 ? 'y' : 'x');
+    let axis: "x" | "y" = $derived(screenWidth <= 768 ? "y" : "x");
 
     let hamburgerBars: HTMLCollectionOf<Element>;
 
@@ -22,7 +22,7 @@
     }
 
     onMount(() => {
-        hamburgerBars = document.getElementsByClassName('hamburger-bar');
+        hamburgerBars = document.getElementsByClassName("hamburger-bar");
     })
 </script>
 
@@ -53,7 +53,7 @@
     a {
         white-space: nowrap;
         font-size: 15px;
-        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
     }
 
     .accordion-container {
