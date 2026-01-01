@@ -6,14 +6,14 @@ import oov3 from "$lib/images/out_of_vengeance/oov3.jpg";
 import oov4 from "$lib/images/out_of_vengeance/oov4.jpg";
 import oov5 from "$lib/images/out_of_vengeance/oov5.jpg";
 import oov6 from "$lib/images/out_of_vengeance/oov6.jpg";
-import be1 from "$lib/images/backfisch_editor/be1.jpg";
-import be2 from "$lib/images/backfisch_editor/be2.jpg";
-import be3 from "$lib/images/backfisch_editor/be3.jpg";
 import ss13 from "$lib/images/the_scuffed_series/ss13.jpg";
 import ss15 from "$lib/images/the_scuffed_series/ss15.jpg";
 import ss17 from "$lib/images/the_scuffed_series/ss17.jpg";
 import ss19 from "$lib/images/the_scuffed_series/ss19.jpg";
 import ss22 from "$lib/images/the_scuffed_series/ss22.jpg";
+import up01 from "$lib/images/university_projects/up01.png";
+import up02 from "$lib/images/university_projects/up02.jpg";
+import up03 from "$lib/images/university_projects/up03.jpg";
 
 export interface ImageProps {
     src: string;
@@ -123,36 +123,6 @@ export const projects: Project[] = [
         ]
     },
     {
-        slug: "backfisch-editor",
-        name: "Backfisch Editor",
-        description: `
-        <p>A text editor I developed some time ago because I was sick of the lack of built-in functionality in other text editors.
-        <p><strong>Features:</strong></p>
-        <ul>
-            <li>Open files are displayed side by side on a continuous canvas rather than in individual tabs</li>
-            <li>Built-in mode for creating colour themes with a live preview on the side</li>
-            <li>Support for the completion of snippets (called "keywords") with a built-in mode for creating them</li>
-            <li>Text files can be switched between "Normal file" mode and "Code" mode, with the latter including some quality of life features such as auto-completion of brackets etc.</li>
-        </ul>
-        <div style="display: flex; justify-content: center; align-items: center;">
-            <a href="https://achat.itch.io/backfisch-editor" target="_blank">View on itch.io</a>
-        </div>`,
-        images: [
-            {
-                src: be1,
-                alt: "Two open files next to each other in the Backfish Editor with the file search open on the right-hand side"
-            },
-            {
-                src: be2,
-                alt: "A showcase of the Backfisch Editor\"s built-in colour theme creator with a live preview on the left-hand side"
-            },
-            {
-                src: be3,
-                alt: "Several open keyword files next to each other in the Backfisch Editor, which showcases the built-in keyword completion system"
-            }
-        ]
-    },
-    {
         slug: "the-scuffed-series",
         name: "The Scuffed Series",
         description: `
@@ -185,6 +155,47 @@ export const projects: Project[] = [
             {
                 src: ss22,
                 alt: 'A formation in "The Scuffed Series 22 - Rapid Guerrilla Busters" defending the core from incoming enemies'
+            }
+        ]
+    },
+    {
+        slug: "university-projects",
+        name: "University projects",
+        description: `
+        <p>During my studies, I participated in three game projects where I took on various tasks.</p>
+        <div style="margin-bottom: 1.5em">
+            <p><strong>Chess But It's A Fighting Game</strong></p>
+            <p>It's chess, but you have to defeat your opponent's piece in a 1v1 side-scrolling twin-stick shooter. This game was my my idea. I was the project lead and also responsible for the combat system, the graphics (except for the pixel art graphics), the VFX and SFX.</p>
+            <div style="display: flex; justify-content: center; align-items: center;">
+                <a href="https://hdm-stuttgart.de/stage/projekt_detail/projekt_details?projekt_ID=3605" target="_blank">View on the HdM Stage</a>
+            </div>
+        </div>
+        <div style="margin-bottom: 1.5em">
+            <p><strong>IGNY MAYSTRA</strong></p>
+            <p>A 1v1 VR magic battle in which you draw runes to cast spells. I made the VFX and SFX.</p>
+            <div style="display: flex; justify-content: center; align-items: center;">
+                <a href="https://hdm-stuttgart.de/stage/projekt_detail/projekt_details?projekt_ID=3882" target="_blank">View on the HdM Stage</a>
+            </div>
+        </div>
+        <div>
+            <p><strong>F.M.L. Forced Magic Labour</strong></p>
+            <p>This is an isometric roguelike with a focus on gathering materials and brewing potions. I was the Technical Director of this project. I set up the game's infrastructure, planned its architecture, coordinated a team of seven engineers and provided technical support when needed.</p>
+            <div style="display: flex; justify-content: center; align-items: center;">
+                <a href="https://hdm-stuttgart.de/stage/projekt_detail/projekt_details?projekt_ID=4294" target="_blank">View on the HdM Stage</a>
+            </div>
+        </div>`,
+        images: [
+            {
+                src: up01,
+                alt: 'Cover artwork for the game "Chess But Is\'s A Fighting Game", which shows a peaceful chessboard on the left half and a bloody platform with two chess pieces shooting at each other on the right half'
+            },
+            {
+                src: up02,
+                alt: 'Cover artwork for the game "IGNY MAYSTRA", showing the player character from behind in front of a forest at night while casting a spell'
+            },
+            {
+                src: up03,
+                alt: 'Cover artwork for the game "F.M.L Forced Magic Labour, showing the player character from behind in front of an old stone arch in a forest"'
             }
         ]
     }

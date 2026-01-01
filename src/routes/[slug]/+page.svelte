@@ -17,8 +17,8 @@
     let imageContainer: HTMLDivElement;
     let slideshowButtons: HTMLCollectionOf<Element>;
     let elapsed: number = 0;
-	let lastTime: DOMHighResTimeStamp = 0;
-	let frame: number;
+    let lastTime: DOMHighResTimeStamp = 0;
+    let frame: number;
 
     const duration: number = 10000;
 
@@ -34,8 +34,12 @@
         index = Math.max(Math.min(index, data.images.length), 0);
 
         if (currentIndex != index) {
-            slideshowButtons[currentIndex].classList.remove("slideshow-button-highlighted");
-            slideshowButtons[index].classList.add("slideshow-button-highlighted");
+            slideshowButtons[currentIndex].classList.remove(
+                "slideshow-button-highlighted",
+            );
+            slideshowButtons[index].classList.add(
+                "slideshow-button-highlighted",
+            );
         }
         currentIndex = index;
         elapsed = 0;
@@ -46,9 +50,13 @@
      */
     function openFullscreenSlideshow(): void {
         imageContainer.classList.add("image-container-fullscreen");
-        document.getElementsByClassName("card-container")[0].classList.add("justify-center");
+        document
+            .getElementsByClassName("card-container")[0]
+            .classList.add("justify-center");
         isSlideshowFullscreen = true;
-        const accordion = document.getElementsByClassName("accordion-container")[0] as HTMLElement;
+        const accordion = document.getElementsByClassName(
+            "accordion-container",
+        )[0] as HTMLElement;
         accordion.style.zIndex = "0";
         document.addEventListener("keydown", onKeyDown);
     }
@@ -58,9 +66,13 @@
      */
     function closeFullscreenSlideshow(): void {
         imageContainer.classList.remove("image-container-fullscreen");
-        document.getElementsByClassName("card-container")[0].classList.remove("justify-center");
+        document
+            .getElementsByClassName("card-container")[0]
+            .classList.remove("justify-center");
         isSlideshowFullscreen = false;
-        const accordion = document.getElementsByClassName("accordion-container")[0] as HTMLElement;
+        const accordion = document.getElementsByClassName(
+            "accordion-container",
+        )[0] as HTMLElement;
         accordion.style.zIndex = "999";
         document.removeEventListener("keydown", onKeyDown);
     }
@@ -83,9 +95,12 @@
 
     afterNavigate(() => {
         if (data.images.length > 1) {
-            slideshowButtons = document.getElementsByClassName("slideshow-button");
+            slideshowButtons =
+                document.getElementsByClassName("slideshow-button");
             for (const slideshowButton of slideshowButtons) {
-                slideshowButton.classList.remove("slideshow-button-highlighted");
+                slideshowButton.classList.remove(
+                    "slideshow-button-highlighted",
+                );
             }
             slideshowButtons[0].classList.add("slideshow-button-highlighted");
         }
@@ -101,38 +116,59 @@
         }
     });
 
-	(function update() {
-		frame = requestAnimationFrame(update);
-		
-        const time = window.performance.now();
-		elapsed += Math.min(time - lastTime, duration - elapsed);
-        if (elapsed >= duration) {
-            setCurrentIndex(currentIndex == data.images.length - 1 ? 0 : currentIndex + 1);
-        }
-		
-        lastTime = time;
-	})();
-</script>
+    (function update() {
+        frame = requestAnimationFrame(update);
 
+        const time = window.performance.now();
+        elapsed += Math.min(time - lastTime, duration - elapsed);
+        if (elapsed >= duration) {
+            setCurrentIndex(
+                currentIndex == data.images.length - 1 ? 0 : currentIndex + 1,
+            );
+        }
+
+        lastTime = time;
+    })();
+</script>
 
 <svelte:head>
     <title>{data.name}</title>
 </svelte:head>
 
-<TextContainer title={data.name} text={data.description}/>
-<div class="image-container" bind:this={imageContainer} style="--fullscreen-width: {variables.contentWidth}px; --fullscreen-height: {variables.contentHeight}px">
+<TextContainer title={data.name} text={data.description} />
+<div
+    class="image-container"
+    bind:this={imageContainer}
+    style="--fullscreen-width: {variables.contentWidth}px; --fullscreen-height: {variables.contentHeight}px"
+>
     {#if isSlideshowFullscreen}
-        <button class="invisible-button close-fullscreen-button" onclick={closeFullscreenSlideshow}></button>
-        <img class="fullscreen-image" src="{data.images[currentIndex].src}" alt={data.images[currentIndex].alt}>
+        <button
+            class="invisible-button close-fullscreen-button"
+            onclick={closeFullscreenSlideshow}
+        ></button>
+        <img
+            class="fullscreen-image"
+            src={data.images[currentIndex].src}
+            alt={data.images[currentIndex].alt}
+        />
     {:else}
-        <button class="invisible-button image-button" onclick={openFullscreenSlideshow}>
-            <img src="{data.images[currentIndex].src}" alt={data.images[currentIndex].alt} >
+        <button
+            class="invisible-button image-button"
+            onclick={openFullscreenSlideshow}
+        >
+            <img
+                src={data.images[currentIndex].src}
+                alt={data.images[currentIndex].alt}
+            />
         </button>
     {/if}
     {#if data.images.length > 1}
         <div class="button-container">
             {#each { length: data.images.length } as _, i}
-                <button class="invisible-button slideshow-button" onclick={() => setCurrentIndex(i)}></button>
+                <button
+                    class="invisible-button slideshow-button"
+                    onclick={() => setCurrentIndex(i)}
+                ></button>
             {/each}
         </div>
     {/if}
@@ -173,9 +209,13 @@
     }
 
     .image-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
         width: 40%;
     }
-    
+
     .button-container {
         margin-top: 5px;
         width: 100%;
