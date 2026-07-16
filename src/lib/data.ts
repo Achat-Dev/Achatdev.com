@@ -188,14 +188,6 @@ export const projects: Project[] = [
             {
                 src: up01,
                 alt: 'Cover artwork for the game "Chess But Is\'s A Fighting Game", which shows a peaceful chessboard on the left half and a bloody platform with two chess pieces shooting at each other on the right half'
-            },
-            {
-                src: up02,
-                alt: 'Cover artwork for the game "IGNY MAYSTRA", showing the player character from behind in front of a forest at night while casting a spell'
-            },
-            {
-                src: up03,
-                alt: 'Cover artwork for the game "F.M.L Forced Magic Labour, showing the player character from behind in front of an old stone arch in a forest"'
             }
         ]
     }
